@@ -1,7 +1,7 @@
 var webserver = require('webserver');
 var server = webserver.create();
 var port = require('system').env.PORT || 8080; // default back to 8080
-var t;
+var t, close_trigger = 0;
 
 
 var service = server.listen(port, function(request, response) {
@@ -23,6 +23,8 @@ var service = server.listen(port, function(request, response) {
 		response.close();
 		setTimeout(function() {
 		  setTimeout(function() {
+			  close_trigger++;
+			  console.log("close_trigger : " + close_trigger);
 		    page.close();
 		  }, 1);
 		}, 1000);

@@ -3,8 +3,10 @@ var server = webserver.create();
 var port = require('system').env.PORT || 8080; // default back to 8080
 var t;
 
-t = Date.now();
+
 var service = server.listen(port, function(request, response) {
+	t = Date.now();
+	
 	var webPage = require('webpage');
 	var page = webPage.create(), count = 0, forcedRenderTimeout, renderTimeout;
 	page.settings.clearMemoryCaches = true;

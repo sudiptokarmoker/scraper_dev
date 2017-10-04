@@ -12,7 +12,7 @@ var service = server.listen(port, function(request, response) {
 	var t, close_trigger = 0;
 	
 	page.settings.clearMemoryCaches = false;
-	page.settings.loadImages = false; 
+	//page.settings.loadImages = false; 
 	var str = request.url;
 	var resourceWait  = 300, maxRenderWait = 10000, url_to_scrap = str.split("/?url=");
 	

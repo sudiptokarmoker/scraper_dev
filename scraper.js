@@ -86,6 +86,11 @@ var service = server.listen(port, function(request, response) {
 			}, 1000);
 		} 
 		else{
+			
+			page.evaluate(function () {
+			    console.log("PAGE LOADDED DONE");
+			});
+			
 			forcedRenderTimeout = setTimeout(function () {
 				doRender();
 			}, maxRenderWait);

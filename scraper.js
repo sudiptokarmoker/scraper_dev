@@ -11,7 +11,7 @@ var service = server.listen(port, function(request, response) {
 	var page = webPage.create(), count = 0, forcedRenderTimeout, renderTimeout;
 	var t, close_trigger = 0;
 	
-	page.settings.clearMemoryCaches = false;
+	page.settings.clearMemoryCaches = true;
 	//page.settings.loadImages = false; 
 	var str = request.url;
 	var resourceWait  = 300, maxRenderWait = 10000, url_to_scrap = str.split("/?url=");

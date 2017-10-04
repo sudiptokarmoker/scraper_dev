@@ -1,7 +1,9 @@
 var webserver = require('webserver');
 var server = webserver.create();
 var port = require('system').env.PORT || 8080; // default back to 8080
+var t;
 
+t = Date.now();
 var service = server.listen(port, function(request, response) {
 	var webPage = require('webpage');
 	var page = webPage.create(), count = 0, forcedRenderTimeout, renderTimeout;
@@ -10,6 +12,9 @@ var service = server.listen(port, function(request, response) {
 	var str = request.url;
 	var resourceWait  = 300, maxRenderWait = 10000, url_to_scrap = str.split("/?url=");
 	function doRender() {
+		t = Date.now() - t;
+		console.log('Loading time ' + t + ' msec');
+		
 		var content = page.content;
 		response.statusCode = 200;
 		response.write(content);

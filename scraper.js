@@ -6,6 +6,7 @@ var service = server.listen(port, function(request, response) {
 	var webPage = require('webpage');
 	var page = webPage.create(), count = 0, forcedRenderTimeout, renderTimeout;
 	page.settings.clearMemoryCaches = true;
+	page.settings.loadImages = false; 
 	var str = request.url;
 	var resourceWait  = 300, maxRenderWait = 10000, url_to_scrap = str.split("/?url=");
 	function doRender() {
@@ -35,6 +36,7 @@ var service = server.listen(port, function(request, response) {
 	};
 	
 	page.open(url_to_scrap[1], function (status) {
+		console.log("dev - 1");
 		//console.log("Status CODE : " + response.statusCode);
 		//console.log("Host : " + response.host);
 		if (status !== "success") {

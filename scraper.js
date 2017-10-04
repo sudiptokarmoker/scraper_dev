@@ -1,18 +1,23 @@
 var webserver = require('webserver');
 var server = webserver.create();
 var port = require('system').env.PORT || 8080; // default back to 8080
-var t, close_trigger = 0;
+
 
 
 var service = server.listen(port, function(request, response) {
-	t = Date.now();
+	
 	
 	var webPage = require('webpage');
 	var page = webPage.create(), count = 0, forcedRenderTimeout, renderTimeout;
+	var t, close_trigger = 0;
+	
 	page.settings.clearMemoryCaches = true;
 	page.settings.loadImages = false; 
 	var str = request.url;
 	var resourceWait  = 300, maxRenderWait = 10000, url_to_scrap = str.split("/?url=");
+	
+	t = Date.now();
+	
 	function doRender() {
 		
 		

@@ -91,7 +91,7 @@ var service = server.listen(port, function(request, response) {
 			}, 1000);
 		} 
 		else{
-			/*
+			
 			var content = page.content;
 		response.statusCode = 200;
 		response.write(content);
@@ -101,12 +101,12 @@ var service = server.listen(port, function(request, response) {
 			    page.close();
 			  }, 1);
 			}, 1000);
-			*/
 			
+			/*
 			forcedRenderTimeout = setTimeout(function () {
 				doRender();
 			}, maxRenderWait);
-			
+			*/
 		}
 	});
 });

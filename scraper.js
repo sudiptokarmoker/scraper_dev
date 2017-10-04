@@ -20,8 +20,19 @@ var service = server.listen(port, function(request, response) {
 		  }, 1);
 		}, 1000);
 	}
-
+	
+	block_urls = ['gstatic.com', 'adocean.pl', 'gemius.pl', 'twitter.com', 'facebook.net', 'facebook.com', 'planplus.rs'];
 	page.onResourceRequested = function(requestData, request) {
+	for(url in block_urls) {
+		if(requestData.url.indexOf(block_urls[url]) !== -1) {
+		    request.abort();
+		    console.log(requestData.url + " aborted");
+		    return;
+		}
+	    }
+		
+		
+		
 	    count += 1;
 	    clearTimeout(renderTimeout);
 	};
@@ -34,6 +45,19 @@ var service = server.listen(port, function(request, response) {
 			}
 		}
 	};
+	
+	/*
+	block_urls = ['gstatic.com', 'adocean.pl', 'gemius.pl', 'twitter.com', 'facebook.net', 'facebook.com', 'planplus.rs'];
+	page.onResourceRequested = function(requestData, request){
+	    for(url in block_urls) {
+		if(requestData.url.indexOf(block_urls[url]) !== -1) {
+		    request.abort();
+		    console.log(requestData.url + " aborted");
+		    return;
+		}
+	    }            
+	}
+	*/
 	
 	page.open(url_to_scrap[1], function (status) {
 		console.log("dev - 1");
